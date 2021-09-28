@@ -27,10 +27,13 @@ public class VendaController {
 
     @PostMapping("/{clienteId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public VendaDto cadastrarVenda(@RequestBody @Valid Venda venda, @PathVariable int clienteId) throws ClienteNaoEncontradoException {
-        Venda vendaModel = vendaService.cadastrarVenda(clienteId, venda);
+    //---------------------------------------------------------------------------------------------------------------------------------
+    public void cadastrarVenda(@RequestBody @Valid VendaDto vendaDto, @PathVariable int clienteId) throws ClienteNaoEncontradoException {
+        //Venda vendaModel = vendaService.cadastrarVenda(clienteId, venda);
 
-        return modelMapper.map(vendaModel, VendaDto.class);
+        Venda vendaModel = vendaDto.converterDtoEmVenda();
+        vendaService.cadastrarVenda(clienteId,vendaModel);
+        //return modelMapper.map(vendaModel, VendaDto.class);
     }
 
     @GetMapping("/{buscarVendas}")
