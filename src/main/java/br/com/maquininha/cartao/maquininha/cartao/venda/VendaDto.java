@@ -7,9 +7,7 @@ import javax.validation.constraints.NotBlank;
 public class VendaDto {
 
     private int id;
-    @NotBlank(message = "{validacao.valor}")
     private double valor;
-    @NotBlank(message = "{validacao.opcao}")
     private Opcao opcao;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private int qtdParcela;
@@ -56,5 +54,15 @@ public class VendaDto {
 
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public Venda converterDtoEmVenda(){
+        Venda venda = new Venda();
+        venda.setValor(valor);
+        venda.setOpcao(opcao);
+        venda.setQtdParcela(qtdParcela);
+        venda.setValorTotal(valorTotal);
+
+        return venda;
     }
 }
