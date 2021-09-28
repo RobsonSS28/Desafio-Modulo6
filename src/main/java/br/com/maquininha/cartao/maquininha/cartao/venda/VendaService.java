@@ -43,10 +43,17 @@ public class VendaService {
 
     public List<Venda> buscarVenda(Opcao opcao){
 
+        double totalValor;
+        double totalTaxa;
+        totalValor = calculaValor(opcao);
+        totalTaxa = calculaTotalTaxa(opcao);
+        double resultado = totalValor - totalTaxa;
+        Venda venda;
+        venda.setValorTotal(resultado);
         return vendaRepository.findAllByOpcao( opcao );
     }
 
-    public double calculaSomaTaxa(Opcao opcao){
+    public double calculaTotalTaxa(Opcao opcao){
         List<Venda> vendas = buscarVenda(opcao);
         double soma = 0.0;
         for (Venda venda:vendas){
@@ -55,5 +62,16 @@ public class VendaService {
             soma = tmp;
         }
         return soma;
+    }
+
+    public double calculaValor(Opcao opcao){
+        List<Venda> vendas = buscarVenda(opcao);
+        double somaValor = 0.0;
+        for (Venda venda:vendas){
+            double tmp = 0.0;
+            tmp += venda.getValor();
+            somaValor = tmp;
+        }
+        return somaValor;
     }
 }

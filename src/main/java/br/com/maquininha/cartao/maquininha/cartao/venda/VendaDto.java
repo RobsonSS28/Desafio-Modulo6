@@ -13,6 +13,7 @@ public class VendaDto {
     private Opcao opcao;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private int qtdParcela;
+    private double valorTotal;
 
     public VendaDto() {
     }
@@ -47,5 +48,13 @@ public class VendaDto {
 
     public void setQtdParcela(int qtdParcela) {
         this.qtdParcela = qtdParcela;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 }

@@ -14,7 +14,7 @@ public class Venda {
     private double valor;
     private Opcao opcao;
     private int qtdParcela;
-    private double totalTaxa;
+    private double valorTotal;
 
 
     @ManyToOne
@@ -60,12 +60,12 @@ public class Venda {
         return opcao.taxa;
     }
 
-    public double getTotalTaxa() {
-        return totalTaxa;
+    public double getValorTotal() {
+        return valorTotal;
     }
 
-    public void setTotalTaxa(double totalTaxa) {
-        this.totalTaxa = totalTaxa;
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
     public void setCliente(Cliente cliente) {
